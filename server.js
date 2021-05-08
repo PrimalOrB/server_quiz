@@ -8,7 +8,7 @@ app.use( express.json() );
 app.use( express.static( 'public' ) )
 
 // api routes
-// const apiRoutes = require( './routes/apiRoutes' );
+const apiRoutes = require( './app/routes/apiRoutes' );
 // html routes
 const htmlRoutes = require( './app/routes/htmlRoutes' );
 
