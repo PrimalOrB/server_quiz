@@ -16,7 +16,7 @@ const htmlRoutes = require( './app/routes/htmlRoutes' );
 
 // app use routes
 // app.use('/api', apiRoutes);
-app.use('/', htmlRoutes);
+// app.use('/', htmlRoutes);
 
 require("./app/routes/user.routes.js")(app);
 
