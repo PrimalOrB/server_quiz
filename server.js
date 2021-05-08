@@ -10,7 +10,7 @@ app.use( express.static( 'public' ) )
 // api routes
 // const apiRoutes = require( './routes/apiRoutes' );
 // html routes
-const htmlRoutes = require( './routes/htmlRoutes' );
+const htmlRoutes = require( './app/routes/htmlRoutes' );
 
 // app use routes
 app.use('/api', apiRoutes);
