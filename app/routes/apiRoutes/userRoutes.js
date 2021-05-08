@@ -2,8 +2,8 @@ const express = require( 'express' );
 const router = express.Router();
 const db = require( '../../models/db' );
 
-// get all candidates
-router.get( '/candidates', ( req, res ) => {
+// get all users
+router.get( '/users', ( req, res ) => {
     const sql =  `SELECT * FROM users`;
     
     db.query( sql, ( err, rows ) => {
