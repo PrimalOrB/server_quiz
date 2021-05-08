@@ -1,10 +1,12 @@
 const express = require("express");
-const path = require( 'path' )
+const bodyParser = require("body-parser");
+const path = require( 'path' );
+
 const app = express();
 
 // express addons
-app.use( express.urlencoded( { extended: true } ) );
-app.use( express.json() );
+app.use( bodyParser.urlencoded( { extended: true } ) );
+app.use( bodyParser.json() );
 app.use( express.static( 'public' ) )
 
 // api routes
@@ -13,8 +15,10 @@ const apiRoutes = require( './app/routes/apiRoutes' );
 const htmlRoutes = require( './app/routes/htmlRoutes' );
 
 // app use routes
-app.use('/api', apiRoutes);
-app.use('/', htmlRoutes);
+// app.use('/api', apiRoutes);
+// app.use('/', htmlRoutes);
+
+require("./app/routes/user.routes.js")(app);
 
 // set port, listen for requests
 const PORT = process.env.PORT || 3000;
