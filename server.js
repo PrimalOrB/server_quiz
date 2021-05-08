@@ -2,18 +2,19 @@ const express = require("express");
 
 const app = express();
 
-// parse requests of content-type - application/json
-app.use(express.json());
-
-// parse requests of content-type - application/x-www-form-urlencoded
+// express addons
 app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
+app.use( express.static( 'public' ) )
 
-// simple route
-app.get("/", (req, res) => {
-  res.json({ message: "Welcome to quizz-x application." });
-});
+// api routes
+const apiRoutes = require('./routes/apiRoutes');
+// html routes
+const htmlRoutes = require('./routes/htmlRoutes');
 
-// require("./app/routes/userRoutes.js")(app);
+// app use routes
+app.use('/api', apiRoutes);
+app.use('/', htmlRoutes);
 
 // set port, listen for requests
 const PORT = process.env.PORT || 3000;
