@@ -5,18 +5,18 @@ const path = require( 'path' );
 const app = express();
 
 // express addons
-app.use( bodyParser.urlencoded( { extended: true } ) );
-app.use( bodyParser.json() );
+app.use( express.urlencoded( { extended: true } ) );
+app.use( express.json() );
 app.use( express.static( 'public' ) )
 
 // api routes
-const apiRoutes = require( './app/routes/apiRoutes' );
+// const apiRoutes = require( './app/routes/apiRoutes' );
 // html routes
 const htmlRoutes = require( './app/routes/htmlRoutes' );
 
 // app use routes
 // app.use('/api', apiRoutes);
-// app.use('/', htmlRoutes);
+app.use('/', htmlRoutes);
 
 require("./app/routes/user.routes.js")(app);
 
