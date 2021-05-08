@@ -18,4 +18,22 @@ router.get( '/users', ( req, res ) => {
     } );
 } );
 
+// get single users
+router.get( '/users/:id', ( req, res ) => {
+    const sql =  `SELECT * FROM users where id = ?`;
+    const params = [ req.params.id ]
+    
+    db.query( sql, params, ( err, rows ) => {
+        if ( err ) {
+            res.status( 500 ).json( { error: err.message } );
+            return;
+        }
+        res.json( { 
+            message: 'success',
+            data: rows
+         } );
+    } );
+} );
+
+
 module.exports = router;
