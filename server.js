@@ -1,6 +1,6 @@
 const express = require("express");
-const bodyParser = require("body-parser");
-const path = require( 'path' );
+// const bodyParser = require("body-parser");
+const path = require( 'path' )
 
 const app = express();
 
@@ -10,15 +10,15 @@ app.use( express.json() );
 app.use( express.static( 'public' ) )
 
 // api routes
-// const apiRoutes = require( './app/routes/apiRoutes' );
+const apiRoutes = require( './app/routes/apiRoutes' );
 // html routes
 const htmlRoutes = require( './app/routes/htmlRoutes' );
 
 // app use routes
-// app.use('/api', apiRoutes);
-// app.use('/', htmlRoutes);
+app.use('/api', apiRoutes);
+app.use('/', htmlRoutes);
 
-require("./app/routes/user.routes.js")(app);
+// require("./app/routes/user.routes.js")(app);
 
 // set port, listen for requests
 const PORT = process.env.PORT || 3000;
