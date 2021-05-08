@@ -4,7 +4,7 @@ const db = require( '../../models/db' );
 
 // get all questions
 router.get( '/questions', ( req, res ) => {
-    const sql =  `SELECT * FROM users`;
+    const sql =  `SELECT * FROM questions`;
     
     db.query( sql, ( err, rows ) => {
         if ( err ) {

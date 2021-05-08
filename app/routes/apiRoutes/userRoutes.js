@@ -20,7 +20,11 @@ router.get( '/users', ( req, res ) => {
 
 // get single users
 router.get( '/users/:id', ( req, res ) => {
-    const sql =  `SELECT * FROM users WHERE id = ?`;
+    const sql =  `SELECT users.name, quizzes.name, questions.question, questions.answer, questions.correct
+                    FROM users
+                    JOIN quizzes ON quizzes.owner_id = users.id
+                    JOIN questions ON questions.quiz_id = quizzes.id
+                    WHERE questions.active = 1 and users.id = ?`;
     const params = [ req.params.id ]
     
     db.query( sql, params, ( err, rows ) => {
