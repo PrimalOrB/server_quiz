@@ -18,8 +18,6 @@ const htmlRoutes = require( './app/routes/htmlRoutes' );
 app.use('/api', apiRoutes);
 app.use('/', htmlRoutes);
 
-// require("./app/routes/user.routes.js")(app);
-
 // set port, listen for requests
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
