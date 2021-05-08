@@ -8,14 +8,14 @@ module.exports = app => {
     app.get("/user", user.findAll);
   
     // Retrieve a single Customer with customerId
-    app.get("/user/:customerId", user.findOne);
+    app.get("/user/:userId", user.findOne);
   
     // Update a Customer with customerId
-    app.put("/user/:customerId", user.update);
+    app.put("/user/:userId", user.update);
   
     // Delete a Customer with customerId
-    app.delete("/user/:customerId", user.delete);
+    app.delete("/user/:userId", user.delete);
   
-    // Create a new Customer
+    // Delete All Users
     app.delete("/user", user.deleteAll);
   };
