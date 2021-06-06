@@ -25,22 +25,25 @@ router.get('/callback', function ( req, res, next ) {
       if ( err ) { return next( err ); }
 
       const userStore = { username: user.nickname }
-      fetch( 'http://localhost:3000/api/users', {
+      fetch( 'http://localhost:3000/api/users/check', {
         method: 'POST',
         headers: {
           Accept: 'application/json',
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify(userStore),
+        body: JSON.stringify([userStore]),
       } )
-      .then(
-        req.session.save( () => {
-          req.session.user_id = user.id;
-          req.session.username = user.nickname;
-          req.session.picture = user.picture;
-          req.session.loggedIn = true;
-          res.redirect('/');
-        } )
+      .then( res => res.json() )
+      .then( response => {
+          req.session.save( () => {
+            req.session.user_authid = user.id;
+            req.session.user_id = response[0].user_id;
+            req.session.username = user.nickname;
+            req.session.picture = user.picture;
+            req.session.loggedIn = true;
+            res.redirect('/');
+          } )
+        }
       )
     } );
   } ) ( req, res, next );
