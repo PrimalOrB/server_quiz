@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>quizz-x</title>
+    <link rel="stylesheet" href="/stylesheets/style.css">
+</head>
+
+<body>
+    <div class="wrapper">
+
+        <header>
+            <div class="sub-wrapper">
+                <h1>
+                    <a href="/">quizz-x</a>
+                </h1>
+                <nav>
+                    {{#if loggedIn}}
+                    <a href="/profile" class="nav-btn profile-head">
+                        <div class="profile-img-wrap">
+                            <img class="profile-img" src="{{picture}}" alt="profile image">
+                        </div>
+                        <span>{{user}}</span>
+                    </a>
+                    <a href="/logout" class="nav-btn">
+                        <span>logout</span>
+                    </a>
+                    {{else}}
+                    <a href="/login" class="nav-btn">
+                        <span>login</span>
+                    </a>
+                    {{/if}}
+                </nav>
+            </div>
+        </header>
+
+        <main>
+            {{{ body }}}
+        </main>
+        <footer>
+            <div class="sub-wrapper">
+                <span id="footer-text">footer</span>
+            </div>
+        </footer>
+    </div>
+
+</body>
+
+</html>
