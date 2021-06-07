@@ -84,3 +84,31 @@ main {
   width: 100%;
   max-width: 1000px;
 }
+
+main h1,
+main h2 {
+  width: 100%;
+}
+
+.quiz-list {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.quiz-list ol {
+  display: flex;
+  width: 90%;
+  justify-content: space-evenly;
+}
+
+.quiz-list a {
+  display: flex;
+  flex-wrap: wrap;
+  width: 20%;
+}
+
+.quiz-list a .card-title {
+  width: 100%;
+}

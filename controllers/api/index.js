@@ -1,12 +1,12 @@
 const router = require('express').Router();
 
 const userRoutes = require('./user-routes');
-// const quizzesRoutes = require('../apiRoutes/quizzesRoutes');
+const quizRoutes = require('./quiz-routes');
 // const questionsRoutes = require('../apiRoutes/questionsRoutes');
 // const scoresRoutes = require('../apiRoutes/scoresRoutes');
 
 router.use( '/users', userRoutes );
-// router.use(quizzesRoutes);
+router.use( '/quiz', quizRoutes);
 // router.use(questionsRoutes);
 // router.use(scoresRoutes);
 

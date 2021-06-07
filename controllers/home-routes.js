@@ -1,18 +1,11 @@
 var express = require('express');
 var router = express.Router();
+var secured = require('../lib/middleware/secured');
+const { User, Quiz } = require( '../models' );
 
-/* GET home page. */
+// Home Page
 router.get('/', function (req, res, next) {
   res.render( 'homepage', { 
-    user: req.session.username,
-    picture: req.session.picture,
-    loggedIn: req.session.loggedIn
-  } );
-});
-
-/* GET profile page. */
-router.get('/profile', function (req, res, next) {
-  res.render( 'profile', { 
     user: req.session.username,
     picture: req.session.picture,
     loggedIn: req.session.loggedIn

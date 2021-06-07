@@ -1,0 +1,11 @@
+<h1>Dashboard</h1>
+<article class="quiz-list">
+    <h2>Your quizzes:</h2>
+    <ol>
+        {{#each quizzes as |quiz|}}
+        <a href="/quiz/{{quiz.id}}" data-id="{{quiz.id}}">
+            {{> quiz-tile quiz}}
+        </a>
+        {{/each}}
+    </ol>
+</article>

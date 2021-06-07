@@ -1,9 +1,19 @@
 const router = require( 'express' ).Router();
-const { User } = require( '../../models' );
+const { User, Quiz } = require( '../../models' );
 
     // get all users /api/users
 router.get( '/', ( req, res ) => {
-    User.findAll( {} )
+    User.findAll( {
+        include: [
+            {
+                model: Quiz,
+                attributes: ['id','title','description'],
+                where: {
+                    active: true
+                }
+            }
+        ]
+    } )
     .then( dbUserData => res.json( dbUserData ) )
     .catch( err => {
         console.log( err );
@@ -16,7 +26,16 @@ router.get( '/:id', ( req, res ) => {
     User.findOne( {
         where: {
             id: req.params.id
-        }
+        },
+        include: [
+            {
+                model: Quiz,
+                attributes: ['id','title','description'],
+                where: {
+                    active: true
+                }
+            }
+        ]
     } )
     .then( dbUserData => res.json( dbUserData ) )
     .catch( err => {
@@ -27,8 +46,6 @@ router.get( '/:id', ( req, res ) => {
 
     // POST new user /api/users
 router.post('/', ( req, res ) => {
-    console.log( req )
-
     // expects { username: 'bbb' }
     User.create( { 
         username: req.body.username
